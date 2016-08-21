@@ -11,6 +11,7 @@ ENV CONFD_VERSION 0.11.0
 RUN \
     apt-get update -qq && \
     apt-get install -yqq \
+        git \
         icu-devtools \
         libicu-dev \
         libmcrypt-dev \
