@@ -23,6 +23,7 @@ RUN \
     && docker-php-ext-install \
         pdo_mysql \
         gd \
+        exif \
         intl \
         mbstring \
         mcrypt \
