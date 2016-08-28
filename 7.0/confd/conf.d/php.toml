@@ -1,0 +1,12 @@
+[template]
+
+# The name of the template that will be used to render the application's configuration file
+# Confd will look in `/etc/confd/templates` for these files by default
+src = "php.tmpl"
+
+# The location to place the rendered configuration file
+dest = "/usr/local/etc/php/php.ini"
+
+# File ownership and mode information
+owner = "root"
+mode = "0644"
