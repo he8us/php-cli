@@ -7,22 +7,22 @@ COPY confd/ /etc/confd
 
 ENV CONFD_VERSION 0.11.0
 
+RUN \
+    curl -L -o /usr/local/bin/confd https://github.com/kelseyhightower/confd/releases/download/v${CONFD_VERSION}/confd-${CONFD_VERSION}-linux-amd64 && \
+    chmod +x /usr/local/bin/confd
+
 
 RUN \
     apt-get update -qq && \
     apt-get install -yqq \
+        --no-install-recommends \
         icu-devtools \
         libicu-dev \
-        libfreetype6-dev \
-        libjpeg62-turbo-dev \
-        libpng12-dev \
         libmcrypt-dev \
+        libmagickwand-dev \
         mysql-client \
-    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install \
         pdo_mysql \
-        gd \
         exif \
         intl \
         mbstring \
@@ -30,10 +30,8 @@ RUN \
         bcmath
 
 
-
-RUN \
-    curl -L -o /usr/local/bin/confd https://github.com/kelseyhightower/confd/releases/download/v${CONFD_VERSION}/confd-${CONFD_VERSION}-linux-amd64 && \
-    chmod +x /usr/local/bin/confd
+RUN pecl install imagick \
+    && docker-php-ext-enable imagick
 
 
 RUN \
