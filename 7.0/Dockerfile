@@ -22,14 +22,16 @@ RUN \
         libmcrypt-dev \
         libmagickwand-dev \
         mysql-client \
+        zlib1g-dev \
+        unzip \
     && docker-php-ext-install \
         pdo_mysql \
         exif \
         intl \
         mbstring \
         mcrypt \
-        bcmath
-
+        bcmath \
+        zip
 
 RUN pecl install imagick \
     && docker-php-ext-enable imagick
