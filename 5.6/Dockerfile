@@ -16,6 +16,7 @@ RUN \
     apt-get update -qq && \
     apt-get install -yqq \
         --no-install-recommends \
+        git \
         icu-devtools \
         libicu-dev \
         libmcrypt-dev \
