@@ -23,15 +23,17 @@ RUN \
         libmagickwand-dev \
         mysql-client \
         zlib1g-dev \
-        unzip \
-    && docker-php-ext-install \
+        unzip
+
+RUN docker-php-ext-install \
         pdo_mysql \
         exif \
         intl \
         mbstring \
         mcrypt \
         bcmath \
-        zip
+        zip \
+        bz2
 
 
 RUN pecl install imagick \
@@ -41,6 +43,8 @@ RUN pecl install imagick \
 RUN \
     curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar /usr/bin/composer
+
+ENV COMPOSER_ALLOW_SUPERUSER 1
 
 COPY . /app/
 WORKDIR /app/
