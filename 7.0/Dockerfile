@@ -41,6 +41,8 @@ RUN \
 RUN pecl install imagick \
     && docker-php-ext-enable imagick
 
+RUN pecl install apcu \
+    && docker-php-ext-enable apcu
 
 RUN \
     curl -sS https://getcomposer.org/installer | php && \
