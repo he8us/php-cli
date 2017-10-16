@@ -1,4 +1,4 @@
-FROM php:5.6-alpine
+FROM php:7.1-alpine
 
 MAINTAINER Cedric Michaux <cedric@he8us.be>
 
@@ -47,7 +47,6 @@ RUN \
         pdo_mysql \
         zip \
     && apk del .phpize-deps
-
 
 RUN \
     curl -sS https://getcomposer.org/installer | php && \
