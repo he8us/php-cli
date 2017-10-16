@@ -26,7 +26,8 @@ RUN \
         libtool \
         pcre-dev \
         wget \
-        zip
+        zip \
+        git
 
 RUN \
     apk --no-cache add \
